@@ -28,21 +28,20 @@ def move_servos(pipe):
                 print 'set dc_1', dc
                 servo_1_dc = dc
                 servo_1.ChangeDutyCycle(dc)
-                if servo_1_dc > servo_1_dc_old:
-                    while servo_1_dc > servo_1_dc_old:
-                        servo_1_dc_old += 0.1
-                        if servo_1_dc_old > 100 or servo_1_dc_old < 0:
-                            break
-                        servo_1.ChangeDutyCycle(servo_1_dc_old)
-                        time.sleep(0.02)
-                else:
-                    while servo_1_dc < servo_1_dc_old:
-                        servo_1_dc_old -= 0.1
-                        if servo_1_dc_old > 100 or servo_1_dc_old < 0:
-                            break
-                        servo_1.ChangeDutyCycle(servo_1_dc_old)
-                        time.sleep(0.02)
-                servo_1_dc_old = servo_1_dc
+                while servo_1_dc > servo_1_dc_old:
+                    servo_1_dc_old += 0.1
+                    if servo_1_dc_old > 100 or servo_1_dc_old < 0:
+                        break
+                    servo_1.ChangeDutyCycle(servo_1_dc_old)
+                    time.sleep(0.02)
+
+                while servo_1_dc < servo_1_dc_old:
+                    servo_1_dc_old -= 0.1
+                    if servo_1_dc_old > 100 or servo_1_dc_old < 0:
+                        break
+                    servo_1.ChangeDutyCycle(servo_1_dc_old)
+                    time.sleep(0.02)
+
             if servo == 2:
                 print 'set dc_2', dc
                 servo_2_dc = dc
