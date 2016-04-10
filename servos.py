@@ -27,7 +27,6 @@ def move_servos(pipe):
             if servo == 1:
                 print 'set dc_1', dc
                 servo_1_dc = dc
-                servo_1.ChangeDutyCycle(dc)
                 if servo_1_dc > servo_1_dc_old:
                     while servo_1_dc > servo_1_dc_old:
                         servo_1_dc_old += 0.1
